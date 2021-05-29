@@ -6,7 +6,7 @@ export class AddAccountRelationToUser1622312897035 implements MigrationInterface
         columnNames: ['account_id'],
         referencedColumnNames: ['id'],
         referencedTableName: 'accounts',
-        onDelete: 'CASCADE',
+        onDelete: 'CASCADE'
     });
 
     public async up(queryRunner: QueryRunner): Promise<any> {

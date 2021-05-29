@@ -13,46 +13,46 @@ export class User1621881973706 implements MigrationInterface {
                     generationStrategy: 'uuid',
                     default: 'uuid_generate_v4()',
                     isPrimary: true,
-                    isNullable: false,
+                    isNullable: false
                 }, {
                     name: 'account_id',
                     type: 'varchar',
                     length: '255',
                     isPrimary: false,
-                    isNullable: true,
+                    isNullable: true
                 }, {
                     name: 'name',
                     type: 'varchar',
                     length: '255',
                     isPrimary: false,
-                    isNullable: false,
+                    isNullable: false
                 }, {
                     name: 'email',
                     isUnique: true,
                     type: 'varchar',
                     length: '255',
                     isPrimary: false,
-                    isNullable: false,
+                    isNullable: false
                 },
                 {
                     name: 'password',
                     type: 'varchar',
                     length: '255',
                     isPrimary: false,
-                    isNullable: false,
+                    isNullable: false
                 },
                 {
                     name: 'created_at',
                     type: 'timestamp',
-                    isNullable: false,
+                    isNullable: false
                 },
                 {
                     name: 'updated_at',
                     type: 'timestamp',
-                    isNullable: true,
+                    isNullable: true
                 }
 
-            ],
+            ]
         });
         await queryRunner.createTable(table);
     }

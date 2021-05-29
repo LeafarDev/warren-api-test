@@ -13,38 +13,38 @@ export class DailyBondYield1622306990858 implements MigrationInterface {
                     generationStrategy: 'uuid',
                     default: 'uuid_generate_v4()',
                     isPrimary: true,
-                    isNullable: false,
+                    isNullable: false
                 },
                 {
-                    name: 'user_id',
+                    name: 'account_id',
                     type: 'varchar',
                     length: '255',
                     isPrimary: false,
-                    isNullable: true,
+                    isNullable: true
                 },
                 {
                     name: 'amount',
                     type: 'numeric(19, 4)',
                     isPrimary: false,
-                    isNullable: false,
+                    isNullable: false
                 },
                 {
                     name: 'created_at',
                     type: 'timestamp',
-                    isNullable: false,
+                    isNullable: false
                 },
                 {
                     name: 'updated_at',
                     type: 'timestamp',
-                    isNullable: true,
+                    isNullable: true
                 }
-            ],
+            ]
         });
         await queryRunner.createTable(table);
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('daily_inbound_yields')
+        await queryRunner.dropTable('daily_inbound_yields');
     }
 
 }

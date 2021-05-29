@@ -13,7 +13,7 @@ export class Accounts1622306944176 implements MigrationInterface {
                     generationStrategy: 'uuid',
                     default: 'uuid_generate_v4()',
                     isPrimary: true,
-                    isNullable: false,
+                    isNullable: false
                 },
                 {
                     name: 'account_number',
@@ -21,26 +21,26 @@ export class Accounts1622306944176 implements MigrationInterface {
                     type: 'varchar',
                     length: '8',
                     isPrimary: false,
-                    isNullable: false,
+                    isNullable: false
                 },
                 {
                     name: 'balance',
                     type: 'numeric(19, 4)',
                     default: '0',
                     isPrimary: false,
-                    isNullable: false,
+                    isNullable: false
                 },
                 {
                     name: 'created_at',
                     type: 'timestamp',
-                    isNullable: false,
+                    isNullable: false
                 },
                 {
                     name: 'updated_at',
                     type: 'timestamp',
-                    isNullable: true,
+                    isNullable: true
                 }
-            ],
+            ]
         });
         await queryRunner.createTable(table);
     }
