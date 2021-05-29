@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "resolveJsonModule": true,
+    "target": "es6",
+    "module": "commonjs",
+    "sourceMap": true,
+    "outDir": "dist",
+    "importHelpers": true,
+    /* Strict Type-Checking Options */
+    "strict": true,
+    "strictNullChecks": false,
+    "strictPropertyInitialization": false,
+    /* Additional Checks */
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    /* Module Resolution Options */
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    /* Experimental Options */
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    /* Advanced Options */
+    "skipLibCheck": true,
+    /* Skip type checking of declaration files. */
+    "forceConsistentCasingInFileNames": true,
+    /* Disallow inconsistently-cased references to the same file. */
+    "lib": [
+      "es5",
+      "es6",
+      "dom",
+      "es2015.core",
+      "es2015.collection",
+      "es2015.generator",
+      "es2015.iterable",
+      "es2015.promise",
+      "es2015.proxy",
+      "es2015.reflect",
+      "es2015.symbol",
+      "es2015.symbol.wellknown",
+      "esnext.asynciterable"
+    ]
+  }
+}
