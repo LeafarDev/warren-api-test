@@ -10,7 +10,6 @@ export function authorizationChecker(connection: Connection): (action: Action, r
         const credentials = await authService.parseTokenAuthFromRequest(action.request);
 
         if (credentials === undefined) {
-            console.log('Invalid credential');
             return false;
         }
         return true;

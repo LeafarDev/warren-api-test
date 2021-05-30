@@ -48,7 +48,6 @@ export class Transaction {
     updatedAt!: Date;
 
     @BeforeInsert()
-
     public setCreateDate(): void {
         this.createdAt = new Date();
     }

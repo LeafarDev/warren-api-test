@@ -32,9 +32,7 @@ export const env = {
             entitiesDir: getOsPath('TYPEORM_ENTITIES_DIR'),
             controllers: getOsPaths('CONTROLLERS'),
             middlewares: getOsPaths('MIDDLEWARES'),
-            interceptors: getOsPaths('INTERCEPTORS'),
-            subscribers: getOsPaths('SUBSCRIBERS'),
-            resolvers: getOsPaths('RESOLVERS')
+            subscribers: getOsPaths('SUBSCRIBERS')
         }
     },
     db: {

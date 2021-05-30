@@ -1,5 +1,6 @@
-import {Authorized, Get, JsonController, Req, UseBefore} from 'routing-controllers';
+import {Authorized, Get, JsonController, OnUndefined, Req, UseBefore} from 'routing-controllers';
 import {Container} from "typeorm-typedi-extensions";
+import {UserNotFound} from "../errors/UserNotFound";
 import {UserIdWrapper} from "../middlewares/UserIdWrapper";
 import {User} from "../models/User";
 import {UserService} from '../services/UserService';
@@ -14,6 +15,7 @@ export class UserController {
 	}
 
 	@Get('/users/me')
+	@OnUndefined(UserNotFound)
 	@UseBefore(UserIdWrapper)
 	findMe(@Req() req: any): Promise<User> {
 		const {userId} = req;
