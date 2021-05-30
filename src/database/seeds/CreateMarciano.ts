@@ -1,3 +1,4 @@
+import currency from "currency.js";
 import {Connection} from 'typeorm';
 import {Factory, Seeder} from 'typeorm-seeding';
 
@@ -11,7 +12,7 @@ export class CreateMarciano implements Seeder {
     public async run(factory: Factory, connection: Connection): Promise<any> {
         const initialDeposit = 40.0001;
         const firstDailyInboundYield = 5.5;
-        const total = initialDeposit + firstDailyInboundYield;
+        const total = currency(initialDeposit, {precision: 4}).add(firstDailyInboundYield).value;
 
         const em = connection.createEntityManager();
         const account = new Account();
@@ -23,7 +24,7 @@ export class CreateMarciano implements Seeder {
         transaction.amount = initialDeposit;
         transaction.type = TransactionType.deposit;
         transaction.sourceAccountNumber = '12345678';
-        transaction.targetAccountNumber = '12345678';
+        transaction.targetAccountNumber = null;
         await em.save(transaction);
 
 
@@ -39,5 +40,4 @@ export class CreateMarciano implements Seeder {
         user.account = createdAccount;
         return await em.save(user);
     }
-
 }
