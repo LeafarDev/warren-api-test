@@ -1,7 +1,7 @@
-import { HttpError } from 'routing-controllers';
+import {HttpError} from 'routing-controllers';
 
 export class IncorrectCredentials extends HttpError {
-    constructor() {
-        super(401, 'Username or password incorrect');
-    }
+	constructor() {
+		super(401, 'Username or password incorrect');
+	}
 }

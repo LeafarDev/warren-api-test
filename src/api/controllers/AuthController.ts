@@ -1,7 +1,7 @@
 import {IsEmail, MinLength} from "class-validator";
 import {Body, JsonController, OnUndefined, Post} from 'routing-controllers';
-import {AuthService} from '../../auth/AuthService';
 import {Container} from "typeorm-typedi-extensions";
+import {AuthService} from '../../auth/AuthService';
 import {IncorrectCredentials} from "../errors/IncorrectCredentials";
 
 

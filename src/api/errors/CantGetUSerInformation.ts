@@ -1,4 +1,4 @@
-import { HttpError } from 'routing-controllers';
+import {HttpError} from 'routing-controllers';
 
 export class CantGetUSerInformation extends HttpError {
 	constructor() {

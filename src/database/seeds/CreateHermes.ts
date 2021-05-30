@@ -24,7 +24,7 @@ export class CreateHermes implements Seeder {
 		transaction.amount = initialDeposit;
 		transaction.type = TransactionType.deposit;
 		transaction.sourceAccountNumber = '68472358';
-		transaction.targetAccountNumber =  null;
+		transaction.targetAccountNumber = null;
 		await em.save(transaction);
 
 

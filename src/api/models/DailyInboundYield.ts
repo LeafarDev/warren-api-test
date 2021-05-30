@@ -1,9 +1,11 @@
 import {IsNotEmpty, IsNumber} from "class-validator";
 import {
 	BeforeInsert,
-	BeforeUpdate, Column,
+	BeforeUpdate,
+	Column,
 	CreateDateColumn,
-	Entity, JoinColumn,
+	Entity,
+	JoinColumn,
 	OneToOne,
 	PrimaryGeneratedColumn,
 	UpdateDateColumn
