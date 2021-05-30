@@ -22,6 +22,7 @@ module.exports = {
         SharedArrayBuffer: 'readonly'
     },
     rules: {
+        "@typescript-eslint/ban-ts-comment": "warn",
         "comma-dangle": "error",
         "comma-style": "error",
         "semi": "error",
