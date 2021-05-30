@@ -1,4 +1,4 @@
-import {ConnectionOptions} from 'typeorm'
+import {ConnectionOptions} from 'typeorm';
 import {env} from '../env';
 
 const config = {
@@ -6,8 +6,8 @@ const config = {
     user: env.db.username,
     port: env.db.port,
     password: env.db.password,
-    database: env.db.database,
-}
+    database: env.db.database
+};
 
 const connectionOptions: ConnectionOptions = {
     type: 'postgres',
@@ -24,8 +24,8 @@ const connectionOptions: ConnectionOptions = {
     logger: env.isProduction ? 'file' : 'debug',
     migrations: env.app.dirs.migrations,
     cli: {
-        migrationsDir: env.app.dirs.migrationsDir,
+        migrationsDir: env.app.dirs.migrationsDir
     }
-}
+};
 
 export = connectionOptions

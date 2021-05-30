@@ -34,8 +34,8 @@ export const env = {
             middlewares: getOsPaths('MIDDLEWARES'),
             interceptors: getOsPaths('INTERCEPTORS'),
             subscribers: getOsPaths('SUBSCRIBERS'),
-            resolvers: getOsPaths('RESOLVERS'),
-        },
+            resolvers: getOsPaths('RESOLVERS')
+        }
     },
     db: {
         type: getOsEnv('TYPEORM_CONNECTION'),
@@ -44,6 +44,6 @@ export const env = {
         username: getOsEnvOptional('TYPEORM_USERNAME'),
         password: getOsEnvOptional('TYPEORM_PASSWORD'),
         database: getOsEnv('TYPEORM_DATABASE'),
-        synchronize: toBool(getOsEnvOptional('TYPEORM_SYNCHRONIZE')),
-    },
-}
+        synchronize: toBool(getOsEnvOptional('TYPEORM_SYNCHRONIZE'))
+    }
+};

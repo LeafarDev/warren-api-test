@@ -26,6 +26,6 @@ module.exports = {
         "comma-style": "error",
         "semi": "error",
         "brace-style": "error",
-        "camelcase": "error"
+        "camelcase": "warn"
     }
 };

@@ -15,16 +15,17 @@ createConnection(connectionOptions).then((connection: Connection): void | Promis
             nullResultCode: 404,
             undefinedResultCode: 204,
             paramOptions: {
-                required: true,
-            },
+                required: true
+            }
         },
         routePrefix: env.app.routePrefix,
         cors: true,
         controllers: env.app.dirs.controllers,
+        validation: true,
         middlewares: env.app.dirs.middlewares,
         interceptors: env.app.dirs.interceptors,
         authorizationChecker: authorizationChecker(connection),
-        currentUserChecker: currentUserChecker(connection),
+        currentUserChecker: currentUserChecker(connection)
     });
     app.listen(env.app.port);
 }).catch(error => console.log(error));
