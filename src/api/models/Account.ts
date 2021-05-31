@@ -1,13 +1,15 @@
 import {IsNotEmpty, IsNumber, IsNumberString, Length} from "class-validator";
 import {
-    BeforeInsert,
-    BeforeUpdate,
-    Column,
-    CreateDateColumn,
-    Entity,
-    OneToOne,
-    PrimaryGeneratedColumn,
-    UpdateDateColumn
+	AfterLoad,
+	BeforeInsert,
+	BeforeUpdate,
+	Column,
+	CreateDateColumn,
+	Entity,
+	OneToMany,
+	OneToOne,
+	PrimaryGeneratedColumn,
+	UpdateDateColumn
 } from 'typeorm';
 import {DailyInboundYield} from "./DailyInboundYield";
 
@@ -33,8 +35,8 @@ export class Account {
 	@OneToOne(() => User, user => user.accountId)
 	public user: User;
 
-	@OneToOne(() => DailyInboundYield, dailyInboundYield => dailyInboundYield.accountId)
-	public dailyInboundYield: DailyInboundYield;
+	@OneToMany(type => DailyInboundYield, dailyInboundYield => dailyInboundYield.account)
+	public dailyInboundYields: DailyInboundYield[];
 
 	@CreateDateColumn({name: 'created_at'})
 	createdAt!: Date;
@@ -55,5 +57,9 @@ export class Account {
 
 	public toString(): string {
 		return `${this.accountNumber} - $${this.balance}`;
+	}
+
+	@AfterLoad() _convertNumerics() {
+		this.balance = parseFloat(this.balance as any);
 	}
 }

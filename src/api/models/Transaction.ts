@@ -1,12 +1,13 @@
 import {IsNotEmpty, IsNumber, IsNumberString, Length} from "class-validator";
 import {
-    BeforeInsert,
-    BeforeUpdate,
-    Column,
-    CreateDateColumn,
-    Entity,
-    PrimaryGeneratedColumn,
-    UpdateDateColumn
+	AfterLoad,
+	BeforeInsert,
+	BeforeUpdate,
+	Column,
+	CreateDateColumn,
+	Entity,
+	PrimaryGeneratedColumn,
+	UpdateDateColumn
 } from "typeorm";
 
 export enum TransactionType {
@@ -59,5 +60,9 @@ export class Transaction {
 
 	public toString(): string {
 		return `$${this.amount} - ${this.type}`;
+	}
+
+	@AfterLoad() _convertNumerics() {
+		this.amount = parseFloat(this.amount as any);
 	}
 }

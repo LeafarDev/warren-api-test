@@ -33,6 +33,9 @@ export const env = {
 			subscribers: getOsPaths('SUBSCRIBERS')
 		}
 	},
+	publicApis: {
+		bcbSelic: process.env.BCB_SELIC_API_URL
+	},
 	db: {
 		type: getOsEnv('TYPEORM_CONNECTION'),
 		host: getOsEnvOptional('TYPEORM_HOST'),

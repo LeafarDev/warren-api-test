@@ -2,15 +2,15 @@ import * as bcrypt from 'bcrypt';
 import {Exclude} from 'class-transformer';
 import {IsEmail, IsNotEmpty} from 'class-validator';
 import {
-    BeforeInsert,
-    BeforeUpdate,
-    Column,
-    CreateDateColumn,
-    Entity,
-    JoinColumn,
-    OneToOne,
-    PrimaryGeneratedColumn,
-    UpdateDateColumn
+	BeforeInsert,
+	BeforeUpdate,
+	Column,
+	CreateDateColumn,
+	Entity,
+	JoinColumn,
+	OneToOne,
+	PrimaryGeneratedColumn,
+	UpdateDateColumn
 } from 'typeorm';
 
 import {Account} from './Account';

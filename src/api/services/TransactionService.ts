@@ -7,6 +7,7 @@ import {EventDispatcher, EventDispatcherInterface} from "../../decorators/EventD
 import {AccountDestinationAndSourceAreEqual} from "../errors/AccountDestinationAndSourceAreEqual";
 import {AccountDestinationNotFound} from "../errors/AccountDestinationNotFound";
 import {CantCreateTransaction} from "../errors/CantCreateTransaction";
+import {CantGetTransaction} from "../errors/CantGetTransaction";
 import {CantGetTransactionList} from "../errors/CantGetTransactionList";
 import {InsufficientFunds} from "../errors/InsufficientFunds";
 import {TransactionAccountDestinationNeeded} from "../errors/TransactionAccountDestinationNeeded";
@@ -24,6 +25,15 @@ export class TransactionService {
 		@InjectRepository() private userRepository: UserRepository,
 		@EventDispatcher() private eventDispatcher: EventDispatcherInterface,
 		@InjectRepository() private accountRepository: AccountRepository) {
+	}
+
+	public async findOne(id: string): Promise<Transaction | undefined> {
+		try {
+			return this.transactionRepository.findOne({id});
+		} catch (error) {
+			logger.fontColorLog('red', error.message);
+			throw new CantGetTransaction;
+		}
 	}
 
 	public async findByUserId(userId: string): Promise<Transaction[]> {
@@ -57,7 +67,7 @@ export class TransactionService {
 					throw new AccountDestinationAndSourceAreEqual;
 				}
 
-				const targetAccount = this.accountRepository.findOne({
+				const targetAccount = await this.accountRepository.findOne({
 					where: {
 						accountNumber: transaction.targetAccountNumber
 					}

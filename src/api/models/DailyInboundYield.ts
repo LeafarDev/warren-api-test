@@ -1,5 +1,6 @@
 import {IsNotEmpty, IsNumber} from "class-validator";
 import {
+	AfterLoad,
 	BeforeInsert,
 	BeforeUpdate,
 	Column,
@@ -50,5 +51,9 @@ export class DailyInboundYield {
 
 	public toString(): string {
 		return `${this.amount} - (${this.accountId})`;
+	}
+
+	@AfterLoad() _convertNumerics() {
+		this.amount = parseFloat(this.amount as any);
 	}
 }

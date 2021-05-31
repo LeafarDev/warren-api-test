@@ -2,6 +2,7 @@ import "reflect-metadata";
 import {createExpressServer} from 'routing-controllers';
 import {Connection, createConnection, useContainer} from "typeorm";
 import {Container} from "typeorm-typedi-extensions";
+import {DailyInboundYieldCron} from "./api/crons/DailyInboundYieldCron";
 import {authorizationChecker} from "./auth/authorizationChecker";
 import {currentUserChecker} from './auth/currentUserChecker';
 import connectionOptions from './database/ormconfig';
@@ -10,6 +11,7 @@ import {SubscriberLoader} from "./loaders/SubscriberLoader";
 
 useContainer(Container);
 new SubscriberLoader().execute();
+new DailyInboundYieldCron().execute();
 
 createConnection(connectionOptions).then((connection: Connection): void | PromiseLike<void> => {
 	const app = createExpressServer({
