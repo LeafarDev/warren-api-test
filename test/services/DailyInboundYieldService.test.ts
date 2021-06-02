@@ -1,4 +1,3 @@
-import currency from "currency.js";
 import {Connection} from "typeorm";
 import {Container} from "typeorm-typedi-extensions";
 import {Account} from "../../src/api/models/Account";

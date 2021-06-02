@@ -40,8 +40,12 @@ export class TransactionService {
 		try {
 			const user = await this.userRepository.findOne({id: userId}, {relations: ['account']});
 			return this.transactionRepository.find({
-				where: {
-					sourceAccountNumber: user.account.accountNumber
+				where: [
+					{sourceAccountNumber: user.account.accountNumber},
+					{targetAccountNumber: user.account.accountNumber}
+				],
+				order: {
+					createdAt: "DESC"
 				}
 			});
 		} catch (error) {

@@ -11,7 +11,7 @@ export class CreateDumingaz implements Seeder {
 
 	public async run(factory: Factory, connection: Connection): Promise<any> {
 		const initialDeposit = 900.0001;
-		const firstDailyInboundYield = 5.5;
+		const firstDailyInboundYield = 9;
 		const total = currency(initialDeposit, {precision: 4}).add(firstDailyInboundYield).value;
 
 		const em = connection.createEntityManager();

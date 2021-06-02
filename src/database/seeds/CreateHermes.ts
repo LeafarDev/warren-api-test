@@ -11,7 +11,7 @@ export class CreateHermes implements Seeder {
 
 	public async run(factory: Factory, connection: Connection): Promise<any> {
 		const initialDeposit = 500.0000;
-		const firstDailyInboundYield = 5.5;
+		const firstDailyInboundYield = 1.5;
 		const total = currency(initialDeposit, {precision: 4}).add(firstDailyInboundYield).value;
 
 		const em = connection.createEntityManager();

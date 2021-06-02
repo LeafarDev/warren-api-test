@@ -9,6 +9,7 @@ import {
 	PrimaryGeneratedColumn,
 	UpdateDateColumn
 } from "typeorm";
+import {v4} from 'uuid';
 
 export enum TransactionType {
 	deposit = 'deposit',
@@ -27,10 +28,7 @@ export class Transaction {
 	@Column({name: 'source_account_number'})
 	public sourceAccountNumber: string;
 
-
-	@IsNumberString({no_symbols: true})
-	@Length(8, 8)
-	@Column({name: 'target_account_number'})
+	@Column({name: 'target_account_number', nullable: true})
 	public targetAccountNumber: string;
 
 	@IsNotEmpty()
@@ -47,6 +45,11 @@ export class Transaction {
 
 	@UpdateDateColumn({name: 'updated_at'})
 	updatedAt!: Date;
+
+	@BeforeInsert()
+	public setId(): void {
+		this.id = v4();
+	}
 
 	@BeforeInsert()
 	public setCreateDate(): void {

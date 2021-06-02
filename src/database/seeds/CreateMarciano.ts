@@ -1,7 +1,6 @@
 import currency from "currency.js";
 import {Connection} from 'typeorm';
 import {Factory, Seeder} from 'typeorm-seeding';
-
 import {User} from '../../../src/api/models/User';
 import {Account} from "../../api/models/Account";
 import {DailyInboundYield} from "../../api/models/DailyInboundYield";
