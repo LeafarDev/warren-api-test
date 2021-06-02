@@ -6,17 +6,21 @@ import {InjectRepository} from "typeorm-typedi-extensions";
 import {EventDispatcher, EventDispatcherInterface} from "../../decorators/EventDispatcher";
 import {env} from "../../env";
 import {isLeapYear} from "../../lib/date";
+import {CantGetAccountTotalInboundYield} from "../errors/CantGetAccountTotalInboundYield ";
 import {DailyInboundYield} from "../models/DailyInboundYield";
 import {AccountRepository} from "../repositories/AccountRepository";
 import {DailyInboundYieldRepository} from "../repositories/DailyInboundYieldRepository";
+import {UserRepository} from "../repositories/UserRepository";
 import {events} from "../subscribers/events";
 import {SelicData} from "../types/SelicData";
+import {UserTotalInboundYield} from "../types/UserTotalInboundYield";
 
 @Service()
 export class DailyInboundYieldService {
 
 	constructor(@InjectRepository() private dailyInboundYieldRepository: DailyInboundYieldRepository,
 		@InjectRepository() private accountRepository: AccountRepository,
+		@InjectRepository() private userRepository: UserRepository,
 		@EventDispatcher() private eventDispatcher: EventDispatcherInterface) {
 	}
 
@@ -46,5 +50,15 @@ export class DailyInboundYieldService {
 		});
 	}
 
+	public async getAccountTotalInboundYield (userId: string): Promise<UserTotalInboundYield> {
+		try {
+			const user = await this.userRepository.findOne({id: userId}, {relations: ['account']});
+			return this.dailyInboundYieldRepository.getAccountTotalInboundYield(user.account.id);
+		} catch (error) {
+			logger.fontColorLog('red', error.message);
+			throw new CantGetAccountTotalInboundYield;
+		}
+
+	}
 
 }
