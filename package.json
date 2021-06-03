@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm",
-    "build": "tsc --project ./",
+    "start": "NODE_ENV=production node dist/src/index.js",
+    "build": "tsc",
     "dev": "NODE_ENV=development ts-node-dev --respawn --pretty --transpile-only src/index.ts",
     "test": "NODE_ENV=test jest --detectOpenHandles --runInBand --coverage",
     "lint": "eslint . --ext .ts,.js",
@@ -40,6 +40,7 @@
     "reflect-metadata": "^0.1.10",
     "routing-controllers": "^0.8.0",
     "routing-controllers-openapi": "^1.7.0",
+    "tslib": "^2.2.0",
     "typedi": "0.10.0",
     "typeorm": "^0.2.32",
     "typeorm-seeding": "^1.6.1",
