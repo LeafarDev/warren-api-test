@@ -32,12 +32,12 @@ export class DailyInboundYieldService {
 			const {data}: { data: SelicData[] } = response;
 			const [selicData] = data;
 			const decimalRate = currency(selicData.valor, {precision: 4}).divide(100).value;
-			const taxaDiariaSelic = currency(decimalRate, {precision: 19}).divide(numberOfDays).value;
+			const dailySelicRate = currency(decimalRate, {precision: 19}).divide(numberOfDays).value;
 
 			for (const account of accounts) {
 				try {
 					const dailyInboundYield = new DailyInboundYield();
-					dailyInboundYield.amount = currency(account.balance, {precision: 4}).multiply(taxaDiariaSelic).value;
+					dailyInboundYield.amount = currency(account.balance, {precision: 4}).multiply(dailySelicRate).value;
 					dailyInboundYield.account = account;
 					const createdDailyInboundYield = await this.dailyInboundYieldRepository.save(dailyInboundYield);
 					this.eventDispatcher.dispatch(events.dailyInboundYield.created, createdDailyInboundYield);
