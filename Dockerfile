@@ -15,8 +15,8 @@ COPY . .
 RUN npm install
 RUN npm run build
 # env
-ENV NODE_ENV=production
 
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
 # check files list
 RUN ls -a
 

@@ -85,7 +85,9 @@
       "js",
       "json"
     ],
-    "modulePathIgnorePatterns": ["./dist/"],
+    "modulePathIgnorePatterns": [
+      "./dist/"
+    ],
     "testEnvironment": "node",
     "setupFilesAfterEnv": [
       "./test/unit/lib/setup.ts"
